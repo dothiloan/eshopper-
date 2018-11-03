@@ -1,0 +1,33 @@
+<% include ../header.ejs %>
+
+<div class="row">
+	<div class="col-sm-12">
+		<h2 class="text-center">DANH SÁCH DANH MỤC SẢN PHẨM</h2>
+		
+		<table class="table">
+			<tr >
+				
+				<th class="text-center">Tên danh mục</th>
+				<th class="text-center">Danh mục chính</th>
+				<th class="text-center">Hành động</th>
+			</tr>
+			
+			<%  
+				for(x of data) {
+					
+			 %>
+			<tr class="text-center">
+				<td style="line-height: 50px; font-size: 15px"><%= x.categoryName %></td>
+				<td style="line-height: 50px; font-size: 15px"><%= x.categoryParent %></td>
+				<td style="line-height: 50px; font-size: 15px">
+					<a href="/admin/edit/<%= x._id%>" class="btn btn-warning">Sửa</a>
+					<a href="/admin/delete-category/<%= x._id %>" class="btn btn-danger">Xóa</a>
+				</td>
+			</tr>
+			<% } %>
+
+		</table>
+	</div>
+</div>
+
+<% include ../footer.ejs %>

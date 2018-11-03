@@ -1,0 +1,54 @@
+<% include ../header.ejs %>
+<script>
+	let message = '';
+	if('<%= showMessage%>' != ''){
+		message = '<%= showMessage%>';
+	}
+
+	if(message != '' ){
+		alert(message);
+	}
+</script>
+
+<div class="row">
+	<div class="col-sm-12">
+		<h2 class="text-center">DANH SÁCH THÀNH VIÊN</h2>
+		
+		<table class="table">
+			<tr>
+				<th class="text-center">STT</th>
+				<th class="text-center">Tên đăng nhập</th>
+				<th class="text-center">Emai</th>
+				<th class="text-center">Họ và tên</th>
+				<th class="text-center">Ngày sinh</th>
+				<th class="text-center" class="text-center">Giới tính</th>
+				<th class="text-center">Ảnh đại diện</th>
+				<th class="text-center">Tình trạng tài khoản</th>
+				<th class="text-center">Hành động</th>
+			</tr>
+			
+			<% 
+			let stt = 0;
+			for(x of data) { 
+				stt++;
+			%>
+			<tr class="text-center">
+				<td style="line-height: 100px; font-size: 15px"><%= stt %></td>
+				<td style="line-height: 100px; font-size: 15px"><%= x.username %></td>
+				<td style="line-height: 100px; font-size: 15px"><%= x.email %></td>
+				<td style="line-height: 100px; font-size: 15px"><%= x.fullname %></td>
+				<td style="line-height: 100px; font-size: 15px"><%= x.birthday %></td>
+				<td style="line-height: 100px; font-size: 15px"><%= (x.sex == 1) ? 'Nam' : 'Nữ' %></td>
+				<td><img src="/images/<%= x.avatar%>" alt="" width="100px" height="100px"></td>
+				<td style="line-height: 100px; font-size: 15px"><%= (x.active == 'on') ? 'Đang kích hoạt' : 'Đã bị khóa' %></td>
+				<td style="line-height: 100px; font-size: 15px">
+					<a href="/admin/edit-users/<%= x._id%>" class="btn btn-warning">Sửa</a>
+					<a href="/admin/delete-users/<%= x._id%>" class="btn btn-danger">Xóa</a>
+				</td>
+			</tr>
+			<%}%>
+		</table>
+	</div>
+</div>
+
+<% include ../footer.ejs %>

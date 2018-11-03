@@ -1,0 +1,40 @@
+<% include ../header.ejs %>
+
+<div class="row">
+	<h2 class="text-center">THÊM NHÃN HIÊỤ </h2>
+	<form method="post" action="/admin/add-brands.html">
+		<div class="col-sm-6">
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Id</label>
+					    <input type="tẽt" name="id" class="form-control" placeholder="Nhập id">
+					    <span style="color: red"></span>
+			</div>
+		</div>
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Tên nhãn hiệu</label>
+					    <input type="tẽt" name="nameBrand" class="form-control" id="" placeholder="Nhập tên nhãn hiệu">
+					    <span style="color: red"></span>
+			</div>
+		</div>
+
+		<div class="row">
+		<div class="col-sm-12">
+			<label for="">Ghi chú</label>
+			<textarea name="comment" id="ckeditor" class="ckeditor" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+		  	<div class="form-group">
+		  		<input type="submit" class="btn btn-success" value="Thêm nhãn hiệu" />
+		  	</div>
+	  </div>
+	</div>
+	</form>
+
+</div>
+
+<% include ../footer.ejs %>

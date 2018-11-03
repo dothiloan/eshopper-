@@ -1,0 +1,65 @@
+<% include ../header.ejs %>
+
+<div class="row">
+	<h2 class="text-center">THÊM SẢN PHẨM </h2>
+	<form method="post" action="/admin/add-product.html" enctype="multipart/form-data">
+		<div class="col-sm-6">
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Tên sản phẩm</label>
+					    <input type="text" name="productsName" class="form-control" id="" placeholder="Nhập tên sản phẩm">
+					    <span style="color: red"></span>
+			</div>
+
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Giá tiền</label>
+					    <input type="text" name="productsPrice" class="form-control" id="" placeholder="Nhập giá tiền">
+					    <span style="color: red"></span>
+			</div>
+		</div>	
+		<div class="col-sm-6">
+			<div class="form-group">
+	    			<label for="exampleInputEmail1">Category</label>
+	   				<select class="form-control" name="productCategory">
+	   					<option value="0">--------Chọn danh mục sản phẩm--------</option>
+	   					<% for (x of category) { %>
+	   					<option value="<%= x._id %>"><%= x.categoryName %></option>
+	   					<% } %>
+					</select>
+	  		</div>
+
+	  		<div class="form-group">
+	    			<label for="exampleInputEmail1">Brand</label>
+	   				<select class="form-control" name="productBrand">
+	   					<option value="0">--------Chọn nhãn hiệu sản phẩm--------</option>
+	   					<% for (x of brand) { %>
+	   					<option value="<%= x._id %>"><%= x.nameBrand %></option>
+	   					<% } %>
+					</select>
+	  		</div>
+
+	  		<div class="form-group">
+					<label for="exampleInputEmail1">Hình ảnh</label>
+					<input type="file" name="productImage" class="form-control" id="exampleInputPassword1" placeholder="">
+			</div>
+
+		</div>	
+
+	<div class="row">
+		<div class="col-sm-12">
+			<label for="">Ghi chú</label>
+			<textarea name="comment" id="ckeditor" class="ckeditor" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+		  	<div class="form-group">
+		  		<input type="submit" class="btn btn-success" value="Thêm sản phẩm" />
+		  	</div>
+	  </div>
+	</div>
+	</form>
+
+</div>
+
+<% include ../footer.ejs %>

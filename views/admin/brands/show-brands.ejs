@@ -1,0 +1,34 @@
+<% include ../header.ejs %>
+
+<div class="row">
+	<div class="col-sm-12">
+		<h2 class="text-center">DANH SÁCH NHÃN HIÊỤ</h2>
+		
+		<table class="table">
+			<tr >
+				<th class="text-center">STT</th>
+				<th class="text-center">Id</th>
+				<th class="text-center">Tên nhãn hiệu</th>
+				<th class="text-center">Hành động</th>
+			</tr>
+			
+			<%  let stt = 0;
+				for(x of data) {
+					stt++;
+			 %>
+			<tr class="text-center">
+				<td style="line-height: 50px; font-size: 15px"><%= stt %></td>
+				<td style="line-height: 50px; font-size: 15px"><%= x.id %></td>
+				<td style="line-height: 50px; font-size: 15px"><%= x.nameBrand %></td>
+				<td style="line-height: 50px; font-size: 15px">
+					<a href="/admin/edit/<%= x._id%>" class="btn btn-warning">Sửa</a>
+					<a href="/admin/delete-brands/<%= x._id %>" class="btn btn-danger">Xóa</a>
+				</td>
+			</tr>
+			<% } %>
+
+		</table>
+	</div>
+</div>
+
+<% include ../footer.ejs %>

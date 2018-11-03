@@ -1,0 +1,38 @@
+<% include ../header.ejs %>
+
+<div class="row">
+	<h2 class="text-center">THÊM MENU </h2>
+	<form method="post" action="/admin/add-menu.html">
+		<div class="col-sm-6">
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Tên Menu</label>
+					    <input type="text" name="menuName" class="form-control" id="" placeholder="Nhập tên menu">
+					    <span style="color: red"></span>
+			</div>
+		</div>	
+		<div class="col-sm-6">
+			<div class="form-group">
+	    			<label for="exampleInputEmail1">Menu Chính</label>
+	   				<select class="form-control" name="menuParent">
+	   					<option value="0">----Chon Menu Chính----- </option>
+	   					<% for(x of data) {
+	   					   if (x.menuParent == 0) {
+	   					 %>
+	   					<option value="<%= x._id %>"><%= x.menuName%></option>
+	   					<% }} %>
+					</select>
+	  		</div>
+		</div>	
+
+	<div class="row">
+		<div class="col-sm-12">
+		  	<div class="form-group">
+		  		<input type="submit" class="btn btn-success" value="Thêm menu" />
+		  	</div>
+	  </div>
+	</div>
+	</form>
+
+</div>
+
+<% include ../footer.ejs %>

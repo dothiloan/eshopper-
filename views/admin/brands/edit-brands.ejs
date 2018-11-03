@@ -1,0 +1,50 @@
+<% include ../header.ejs %>
+<form method="post" action="/admin/edit">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+					    <input type="hidden" name="_id" class="form-control" placeholder="" value="<%= data[0]._id %>">
+			</div>
+
+		</div>
+	</div>
+<div class="row">
+	<h2 class="text-center">SƯẢ NHÃN HIÊỤ </h2>
+	
+		<div class="col-sm-6">
+			
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Id</label>
+					    <input type="text" name="id" class="form-control" placeholder="Nhập id" value="<%= data[0].id %>">
+					    <span style="color: red"></span>
+			</div>
+		</div>
+		
+		<div class="col-sm-6">
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Tên nhãn hiệu</label>
+					    <input type="text" name="nameBrand" class="form-control" id="" placeholder="Nhập tên nhãn hiệu" value="<%= data[0].nameBrand %>">
+					    <span style="color: red"></span>
+			</div>
+		</div>
+
+		<div class="row">
+		<div class="col-sm-12">
+			<label for="">Ghi chú</label>
+			<textarea name="comment" id="ckeditor" class="ckeditor" cols="30" rows="10"  value="<%= data[0].comment %>"></textarea>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+		  	<div class="form-group">
+		  		<input type="submit" class="btn btn-success" value="Sửa nhãn hiệu" />
+		  	</div>
+	  </div>
+	</div>
+	
+
+</div>
+</form>
+
+<% include ../footer.ejs %>

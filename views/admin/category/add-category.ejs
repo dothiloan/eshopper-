@@ -1,0 +1,40 @@
+<% include ../header.ejs %>
+
+<div class="row">
+	<h2 class="text-center">THÊM DANH MỤC SẢN PHẨM </h2>
+	<form method="post" action="/admin/add-category.html">
+		<div class="col-sm-6">
+			<div class="form-group">
+					    <label for="exampleInputEmail1">Tên danh mục sản phẩm</label>
+					    <input type="text" name="categoryName" class="form-control" id="" placeholder="Nhập tên sản phẩm">
+					    <input type="checkbox" name="isCheck" style="margin-top: 20px">Có danh mục con
+					    <span style="color: red"></span>
+			</div>
+		</div>	
+		<div class="col-sm-6">
+			<div class="form-group">
+	    			<label for="exampleInputEmail1">Danh mục chính</label>
+
+	   				<select class="form-control" name="categoryParent">
+	   					<option value="0">----Chọn Danh Mục Chính----- </option>
+	   					<% for(x of data){ 
+							if(x.categoryParent == 0){
+	   					%>
+	   					<option value="<%= x._id%>"><%= x.categoryName%></option>
+	   					<% }} %>
+					</select>
+	  		</div>
+		</div>	
+
+	<div class="row">
+		<div class="col-sm-12">
+		  	<div class="form-group">
+		  		<input type="submit" class="btn btn-success" value="Thêm danh mục" />
+		  	</div>
+	  </div>
+	</div>
+	</form>
+
+</div>
+
+<% include ../footer.ejs %>

@@ -1,0 +1,125 @@
+<% include ../header.ejs %>
+<% 
+	let userError = "";
+	let passwordError = "";
+	let emailError = "";
+	let pathimagesError = "";
+	let fullnameError = "";
+	let birthdayError = "";
+
+	if(err.userError != ''){
+		userError = err.userError;
+	}
+	if(err.passwordError != ""){
+		passwordError = err.passwordError;
+	}
+	if(err.emailError != ""){
+		emailError = err.emailError;
+	}
+	if(err.pathimagesError != ""){
+		pathimagesError = err.pathimagesError;
+	}
+	if(err.fullnameError != ""){
+		fullnameError = err.fullnameError;
+	}
+	if(err.birthdayError != ""){
+		birthdayError = err.birthdayError;
+	}
+
+%>
+
+<div class="row">
+	<div class="col-sm-12">
+		<h2 class="text-center">Thêm Thành Viên</h2>
+	</div>
+</div>
+
+<form method="post" action="/admin/add-users.html" enctype="multipart/form-data">
+	<div class="row">
+		
+			<div class="col-sm-6">
+				<div class="form-group">
+				    <label for="exampleInputEmail1">Tên đăng nhập</label>
+				    <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="Tên đăng nhập">
+				    <span style="color: red"> <%= userError  %></span>
+				</div>
+
+				<div class="form-group">
+				    <label for="exampleInputPassword1">Mật khẩu</label>
+				    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
+				     <span style="color: red"> <%= passwordError  %></span>
+		  		</div>
+
+				<div class="form-group">
+	    			<label for="exampleInputEmail1">Địa chỉ Email</label>
+	   				<input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+	   				<span style="color: red"> <%= emailError  %></span>
+	  			</div>
+
+				<div class="form-group">
+					<label for="exampleInputEmail1">Giới tính</label>
+		  			<select class="form-control" name="sex">
+					  <option value="1">Nam</option>
+					  <option value="0">Nữ</option>
+					</select>
+				</div>
+				 
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+				    <label for="exampleInputEmail1">Họ và tên</label>
+				    <input type="text" name="fullname" class="form-control" id="exampleInputEmail1" placeholder="Họ và tên">
+				    <span style="color: red"> <%= fullnameError  %></span>
+				</div>
+
+				<div class="form-group">
+				    <label for="exampleInputPassword1">Ngày sinh</label>
+				    <input type="date" name="birthday" class="form-control" id="exampleInputPassword1" placeholder="Ngày sinh">
+				    <span style="color: red"> <%= birthdayError  %></span>
+		  		</div>
+
+				<div class="form-group">
+	    			<label for="exampleInputEmail1">Địa chỉ</label>
+	   				<select class="form-control" name="address">
+	   				  <% for(x of data) { %>
+					  <option value="<%= x.id_city %>"><%= x.city_name %></option>
+					  <% } %>
+					  
+					</select>
+	  			</div>
+
+				<div class="form-group">
+					<label for="exampleInputEmail1">Ảnh đại diện</label>
+					<input type="file" name="avatar" class="form-control" id="exampleInputPassword1" placeholder="">
+				</div>
+				 
+			</div>
+		
+	</div>
+
+
+	<div class="rơ">
+		<div class="col-sm-12">
+			<label for="">Ghi chú</label>
+			<textarea name="comment" id="ckeditor" class="ckeditor" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+
+	<div class="rơ">
+		<div class="col-sm-12">
+			<div class="checkbox">
+			    <label>
+			      <input type="checkbox" name="active">Active ?
+			    </label>
+		  	</div>
+
+		  	<div class="form-group">
+		  		<input type="submit" class="btn btn-success" value="Thêm thành viên" />
+		  	</div>
+	  </div>
+	</div>
+
+</form>
+
+<% include ../footer.ejs %>
