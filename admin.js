@@ -429,10 +429,55 @@ router.post('/add-product.html', upload.single('productImage'), (req, res, next)
 		let dbo = db.db('eshopper');
 		dbo.collection('products').insertOne(results, (err, data) => {
 			if (err) throw err;
-			console.log(data);
 			db.close();
 			res.redirect('/admin/add-product.html');
 		});
 	});
 });
+
+router.get('/show-product.html', (req, res, next) => {
+	MongoClient.connect(url, (err, db) => {
+		if (err) throw err;
+		let dbo = db.db('eshopper');
+		let categoryProduct = null;
+		let brandsProduct = null;
+
+		dbo.collection('category').find({}).toArray((err, data) => {
+			if (err) throw err;
+			categoryProduct = data;
+			// console.log(categoryProduct);
+		});
+
+		dbo.collection('brands').find({}).toArray((err, data) => {
+			if (err) throw err;
+			brandsProduct = data;
+			// console.log(brandsProduct);
+		});
+
+		dbo.collection('products').find({}).toArray((err, data) => {
+			if (err) throw err;
+			res.render('admin/products/show-product', {data : data,cate : categoryProduct, bra : brandsProduct});
+		});
+	});
+});
+
+// router.get('/delete-product/:id', (req, res, next) => {
+// 	MongoClient.connect(url, (err, db) => {
+// 		if(err) throw err;
+// 		let dbo = db.db('eshopper');
+// 		dbo.collection('products').deleteOne({_id : objectId(req.params.id)}, (err, data) => {
+// 			if(err) throw err;
+// 			res.redirect('/admin/show-product.html');
+
+// 		});
+// 		db.close();
+
+// 	});
+
+// });
+
+// router.get('/edit/:id', (req, res, next) => {
+// 	res.render('admin/products/edit-product');
+// });
+
 module.exports = router;

@@ -1,0 +1,51 @@
+<% include ../header.ejs 
+	console.log(data);
+%>
+<div class="row">
+	<div class="col-sm-12">
+		<h2 class="text-center">DANH SÁCH SẢN PHẨM</h2>
+		
+		<table class="table">
+			<tr>
+				<th class="text-center">STT</th>
+				<th class="text-center">Tên sản phẩm</th>
+				<th class="text-center">Giá sản phẩm</th>
+				<th class="text-center">Category</th>
+				<th class="text-center">Brand</th>
+				<th class="text-center">Hình ảnh</th>
+				<th class="text-center">Hành động</th>
+			</tr>
+			<% 
+			let i = 0;
+			for(x of data){
+				i++;
+			%>
+			<tr class="text-center">
+				<td style="line-height: 100px; font-size: 15px"><%= i %></td>
+				<td style="line-height: 100px; font-size: 15px"><%= x.productsName%></td>
+				<td style="line-height: 100px; font-size: 15px"><%= x.productsPrice %></td>
+
+				<% for (item of cate){ 
+					if(item._id == x.productCategory){
+				%>
+				<td style="line-height: 100px; font-size: 15px"><%= item.categoryName %></td>
+				<% }} %>
+				
+				<% for (item1 of bra){ 
+					if(item1._id == x.productBrand){
+				%>
+				<td style="line-height: 100px; font-size: 15px"><%= item1.nameBrand %></td>
+				<% }} %>
+				
+				<td><img src="/images/<%= x.productImage %>" alt="" width="100px" height="100px"></td>
+				<td style="line-height: 100px; font-size: 15px">
+					<a href="" class="btn btn-warning">Sửa</a>
+					<a href="" class="btn btn-danger">Xóa</a>
+				</td>
+			</tr>
+			<% } %>
+		</table>
+	</div>
+</div>
+
+<% include ../footer.ejs %>

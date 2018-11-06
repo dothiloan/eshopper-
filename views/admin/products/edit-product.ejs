@@ -1,0 +1,76 @@
+<% include ../header.ejs %>
+
+<div class="row">
+	<div class="col-sm-12">
+		<h2 class="text-center">Sửa Thông Tin Sản Phẩm</h2>
+	</div>
+</div>
+
+<form method="post" action="/admin/edit-users" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="form-group">
+				    <input type="hidden" name="id" class="form-control" id="exampleInputEmail1" value="" >
+				    <span style="color: red"></span>
+				</div>
+		</div>
+
+	</div>
+	<div class="row">
+		
+			<div class="col-sm-6">
+				<div class="form-group">
+				    <label for="exampleInputEmail1">Tên sản phẩm</label>
+				    <input type="text" name="productName" class="form-control" id="exampleInputEmail1" placeholder="Tên sản phẩm" value="" >
+				    <span style="color: red"></span>
+				</div>
+
+				<div class="form-group">
+				    <label for="exampleInputPassword1">Giá tiền</label>
+				    <input type="password" name="productPrice" class="form-control" id="exampleInputPassword1" placeholder="Giá tiền" value="" >
+				     <span style="color: red"></span>
+		  		</div>
+				 
+			</div>
+
+			<div class="col-sm-6">
+				<div class="form-group">
+	    			<label for="exampleInputEmail1">Địa chỉ</label>
+	   				<select class="form-control" name="address">
+	   				  
+					  <option value="<%= x.id_city %>" <%= checkAddress %> > </option>
+					 
+					  
+					</select>
+	  			</div>
+
+				<div class="form-group">
+					<label for="exampleInputEmail1">Ảnh đại diện</label>
+					<input type="file" name="avatar" class="form-control" id="exampleInputPassword1" placeholder="">
+					<img src="" alt="" width="100px" height="100px" style="margin-top: 20px">
+				</div>
+				 
+			</div>
+		
+	</div>
+
+
+	<div class="rơ">
+		<div class="col-sm-12">
+			<label for="">Ghi chú</label>
+			<textarea name="comment" id="ckeditor" class="ckeditor" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+
+	<div class="rơ">
+		<div class="col-sm-12">
+			<div class="checkbox">
+		  	<div class="form-group">
+		  		<input type="submit" class="btn btn-success" value="Sửa thành viên" />
+		  	</div>
+	  </div>
+	</div>
+
+</form>
+
+<% include ../footer.ejs %>
